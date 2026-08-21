@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax and static-source checks
+        run: |
+          sh -n build.sh
+          test "$(find public -maxdepth 1 -type f -name '*.html' | wc -l)" -eq 1
+          ! grep -R -n '<script' public/index.html public/styles.css
+
+      - name: Build release files
+        run: ./build.sh
