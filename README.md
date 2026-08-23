@@ -75,13 +75,13 @@ installer, then stages the domain files:
 ./build.sh
 ```
 
-For version `0.7.0`, the ignored build outputs are:
+For version `0.7.1`, the ignored build outputs are:
 
 ```text
 public/install.sh
-public/releases/v0.7.0/claude-kiss.tar.gz
-public/releases/v0.7.0/claude-kiss.tar.gz.sha256
-public/releases/v0.7.0/release.json
+public/releases/v0.7.1/claude-kiss.tar.gz
+public/releases/v0.7.1/claude-kiss.tar.gz.sha256
+public/releases/v0.7.1/release.json
 ```
 
 The build intentionally fails if the launcher release is missing, malformed, or does not
