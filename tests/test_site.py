@@ -116,7 +116,7 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(parser.tags["main"], 1)
         self.assertEqual(parser.tags["script"], 0)
         self.assertIn("/", parser.hrefs)
-        self.assertIn("/styles.css?v=2", parser.assets)
+        self.assertIn("/styles.css?v=3", parser.assets)
 
     def test_ids_and_fragment_links(self) -> None:
         duplicates = [item for item, count in Counter(PARSER.ids).items() if count > 1]
@@ -134,8 +134,23 @@ class SourceTests(unittest.TestCase):
         external_assets = [asset for asset in PARSER.assets if not asset.startswith("/")]
         self.assertEqual(external_assets, [])
         self.assertNotRegex(CSS, r"url\(\s*['\"]?https?://")
-        for asset in ("/favicon.svg?v=2", "/mark.svg?v=2", "/styles.css?v=2"):
+        for asset in (
+            "/context-kiss.png",
+            "/context-ordinary.png",
+            "/favicon.svg?v=2",
+            "/mark.svg?v=2",
+            "/styles.css?v=3",
+        ):
             self.assertIn(asset, PARSER.assets)
+
+    def test_context_comparison_is_qualified(self) -> None:
+        self.assertIn("41.6k → 8.2k", INDEX)
+        self.assertIn("33.4k fewer estimated tokens", INDEX)
+        self.assertIn("not a universal benchmark or billing claim", INDEX)
+        for filename in ("context-kiss.png", "context-ordinary.png"):
+            asset = PUBLIC / filename
+            self.assertTrue(asset.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"))
+            self.assertLess(asset.stat().st_size, 200_000)
 
     def test_metadata(self) -> None:
         by_name = {meta.get("name"): meta.get("content", "") for meta in PARSER.metas if meta.get("name")}
@@ -203,6 +218,8 @@ class SourceTests(unittest.TestCase):
                 "/",
                 "/404",
                 "/404.html",
+                "/context-kiss.png",
+                "/context-ordinary.png",
                 "/favicon.svg",
                 "/github",
                 "/index",

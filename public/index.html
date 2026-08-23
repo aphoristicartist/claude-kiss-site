@@ -25,7 +25,7 @@
   <meta name="twitter:description" content="The same Claude Code, with a focused prompt, six core tools, and capability you add when the task needs it.">
   <meta name="twitter:image" content="https://claude-kiss.com/og.jpg?v=2">
   <meta name="twitter:image:alt" content="Claude KISS. Love the model. Control the harness.">
-  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=3">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -163,6 +163,55 @@
           surface. <code>EndConversation</code> may also appear conditionally as a safety tool;
           it does not add file access.
         </p>
+
+        <div class="context-proof" id="context" aria-labelledby="context-title">
+          <div class="context-proof-heading">
+            <div>
+              <p class="eyebrow">Observed starting context</p>
+              <h3 id="context-title">More room for the work.</h3>
+            </div>
+            <p>
+              In this captured Opus 5 comparison, the Claude KISS default started with
+              33.4k fewer estimated tokens in context—about 80% less than ordinary Claude Code.
+            </p>
+          </div>
+
+          <dl class="context-metrics">
+            <div>
+              <dt>41.6k → 8.2k</dt>
+              <dd>estimated tokens used</dd>
+            </div>
+            <div>
+              <dt>958.4k → 991.8k</dt>
+              <dd>free context</dd>
+            </div>
+            <div>
+              <dt>24.5k → 3.9k</dt>
+              <dd>system-tool context</dd>
+            </div>
+          </dl>
+
+          <div class="context-shots">
+            <figure>
+              <figcaption><span>Ordinary Claude Code</span><strong>41.6k used</strong></figcaption>
+              <a class="context-shot-frame" href="/context-ordinary.png" aria-label="Open the ordinary Claude Code context screenshot at full size">
+                <img src="/context-ordinary.png" width="1446" height="876" loading="lazy" decoding="async" alt="Claude Code context view showing 41.6k of 1m tokens used, including 24.5k for system tools, 8.9k for memory files, and 2.7k for skills">
+              </a>
+            </figure>
+            <figure>
+              <figcaption><span>Claude KISS default</span><strong>8.2k used</strong></figcaption>
+              <a class="context-shot-frame" href="/context-kiss.png" aria-label="Open the Claude KISS context screenshot at full size">
+                <img src="/context-kiss.png" width="1424" height="620" loading="lazy" decoding="async" alt="Claude KISS context view showing 8.2k of 1m tokens used, including 3.9k for system tools and 1.9k for memory files">
+              </a>
+            </figure>
+          </div>
+
+          <p class="context-caveat">
+            One observed snapshot, not a universal benchmark or billing claim. <code>/context</code>
+            reports estimates; versions, models, account features, settings, and memory change
+            the totals. Opting into more capability intentionally uses more context.
+          </p>
+        </div>
       </div>
     </section>
 

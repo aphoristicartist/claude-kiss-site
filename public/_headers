@@ -14,6 +14,12 @@
 /styles.css
   Cache-Control: public, max-age=0, must-revalidate
 
+/context-kiss.png
+  Cache-Control: public, max-age=0, must-revalidate
+
+/context-ordinary.png
+  Cache-Control: public, max-age=0, must-revalidate
+
 /favicon.svg
   Cache-Control: public, max-age=0, must-revalidate
 
