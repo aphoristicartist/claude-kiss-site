@@ -1,8 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#ffffff"/>
-  <rect x="48" y="48" width="1104" height="534" fill="none" stroke="#111418" stroke-width="3"/>
-  <text x="100" y="205" fill="#111418" font-family="Helvetica" font-size="45" letter-spacing="8">CLAUDE KISS</text>
-  <text x="96" y="325" fill="#111418" font-family="Georgia" font-size="88">Less surface.</text>
-  <text x="96" y="425" fill="#111418" font-family="Georgia" font-size="88">More shipping.</text>
-  <text x="100" y="505" fill="#5d6470" font-family="Menlo" font-size="28">curl -fsSL https://claude-kiss.com/install.sh | sh</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <title>Claude KISS. Keep the work. Cut the noise.</title>
+  <rect width="1200" height="630" fill="#f3f0e8"/>
+  <path d="M0 0h600v18H0z" fill="#d83a2e"/>
+  <path d="M600 0h240v18H600z" fill="#f2c230"/>
+  <path d="M840 0h360v18H840z" fill="#1746a2"/>
+  <path d="M64 62h1072v506H64z" fill="none" stroke="#11100e" stroke-width="4"/>
+
+  <g transform="translate(98 92) scale(.58)">
+    <rect width="128" height="128" fill="#f3f0e8"/>
+    <rect x="6" y="6" width="116" height="116" fill="none" stroke="#11100e" stroke-width="8"/>
+    <path d="M28 24h18v80H28z" fill="#11100e"/>
+    <path d="m43 57 39-33h25L56 68z" fill="#1746a2"/>
+    <path d="m43 60 14-12 51 56H82z" fill="#d83a2e"/>
+    <circle cx="98" cy="29" r="10" fill="#f2c230" stroke="#11100e" stroke-width="4"/>
+  </g>
+  <text x="194" y="136" fill="#11100e" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="800" letter-spacing="-1">CLAUDE KISS</text>
+  <text x="194" y="169" fill="#5f5b53" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2.8">SECOND LAUNCHER · SAME CLAUDE CODE</text>
+
+  <text x="98" y="314" fill="#11100e" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="800" letter-spacing="-5">Keep the work.</text>
+  <text x="98" y="405" fill="#d83a2e" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="800" letter-spacing="-5">Cut the noise.</text>
+
+  <g transform="translate(880 105)">
+    <circle cx="106" cy="106" r="106" fill="#d83a2e"/>
+    <rect x="0" y="212" width="106" height="106" fill="#1746a2"/>
+    <path d="m106 318 106-106 106 106z" fill="#f2c230"/>
+  </g>
+
+  <rect x="98" y="472" width="1004" height="62" fill="#11100e"/>
+  <text x="126" y="512" fill="#f3f0e8" font-family="Menlo, Consolas, monospace" font-size="23">curl -fsSL https://claude-kiss.com/install.sh | sh</text>
 </svg>

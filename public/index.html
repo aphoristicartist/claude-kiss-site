@@ -1,159 +1,247 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Claude KISS — less surface, more shipping</title>
-  <meta name="description" content="A transparent second launcher for Claude Code for people tired of scope creep, over-engineering, surprise tools, and vendor noise.">
+  <title>Claude KISS — Claude Code, tuned for people who ship</title>
+  <meta name="description" content="A transparent second launcher for Claude Code: a focused prompt, six core coding tools, four convenience switches, and files you own.">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#11100e" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://claude-kiss.com/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Claude KISS">
-  <meta property="og:title" content="Claude KISS — less surface, more shipping">
-  <meta property="og:description" content="Focused coding defaults. Six core tools. Files you own. No vendor noise.">
+  <meta property="og:title" content="Claude KISS — keep the work, cut the noise">
+  <meta property="og:description" content="Claude Code with a focused prompt, six core coding tools, and four convenience switches.">
   <meta property="og:url" content="https://claude-kiss.com/">
   <meta property="og:image" content="https://claude-kiss.com/og.jpg">
+  <meta property="og:image:alt" content="Claude KISS. Keep the work. Cut the noise.">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Claude KISS — less surface, more shipping">
-  <meta name="twitter:description" content="Focused coding defaults. Six core tools. Files you own. No vendor noise.">
+  <meta name="twitter:title" content="Claude KISS — keep the work, cut the noise">
+  <meta name="twitter:description" content="Claude Code with a focused prompt, six core coding tools, and four convenience switches.">
   <meta name="twitter:image" content="https://claude-kiss.com/og.jpg">
+  <meta name="twitter:image:alt" content="Claude KISS. Keep the work. Cut the noise.">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="color-rail" aria-hidden="true"><i></i><i></i><i></i></div>
 
-  <header>
-    <a class="wordmark" href="/">Claude&nbsp;KISS</a>
-    <nav aria-label="Site">
-      <a href="#why">Why</a>
-      <a href="#defaults">Defaults</a>
-      <a href="#own">Own</a>
-      <a href="#inspect">Inspect</a>
-      <a href="#install">Install</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Claude KISS home">
+      <img src="/mark.svg" alt="" width="44" height="44">
+      <span>Claude KISS</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#principle">Principle</a>
+      <a href="#surface">Surface</a>
+      <a href="#control">Control</a>
       <a href="https://github.com/aphoristicartist/claude-kiss">GitHub</a>
+      <a class="nav-install" href="#install">Install <span aria-hidden="true">&#8595;</span></a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero">
-      <h1>Less surface.<br>More shipping.</h1>
-      <p>
-        Claude KISS is a second launcher for Claude Code. Questions stay questions. Fixes
-        stay focused. Extra tools stay opt-in. Your normal <code>claude</code> command
-        remains untouched.
-      </p>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker"><span>v0.7.0</span> Second launcher. Same Claude Code.</p>
+        <h1 id="hero-title">Keep the work.<br><em>Cut the noise.</em></h1>
+        <p class="lede">
+          Claude KISS is Claude Code with a smaller, explicit default surface: a concise
+          builder-first prompt, six core coding tools, and four convenience switches.
+          Same binary, account, and sessions. Your normal <code>claude</code> stays untouched.
+        </p>
 
-      <div class="command" id="install">
-        <span>Install</span>
-        <code>curl -fsSL https://claude-kiss.com/install.sh | sh</code>
+        <div class="install-card" id="install">
+          <div class="install-heading">
+            <span>Install</span>
+            <span>macOS + Linux</span>
+          </div>
+          <pre tabindex="0" aria-label="Install command"><code>curl -fsSL https://claude-kiss.com/install.sh | sh</code></pre>
+          <div class="install-links">
+            <a href="/install.sh">Inspect the script</a>
+            <a href="https://github.com/aphoristicartist/claude-kiss/releases/tag/v0.7.0">Release v0.7.0</a>
+          </div>
+        </div>
+        <p class="requirements">
+          Requires Claude Code. No sudo. No wrapper telemetry. No auto-update.
+        </p>
       </div>
-      <p class="fine">
-        Then run <code>claude-kiss</code>. Requires Claude Code. No sudo. No wrapper
-        telemetry. No auto-update. Download and read <a href="/install.sh">install.sh</a>
-        first if you prefer.
-      </p>
+
+      <figure class="hero-system" aria-labelledby="system-caption">
+        <div class="mark-stage" aria-hidden="true">
+          <img src="/mark.svg" alt="" width="512" height="512">
+        </div>
+        <figcaption id="system-caption">
+          <span><strong>06</strong> core defaults</span>
+          <span><strong>04</strong> quick switches</span>
+        </figcaption>
+      </figure>
     </section>
 
-    <section id="why">
-      <p class="label">Why</p>
-      <h2>Fewer product surfaces. More developer intent.</h2>
-      <p>
-        Recent Claude Code discussions keep describing the same pattern: a capable coding
-        model whose defaults turn one clear request into a project tour.
-      </p>
-      <blockquote>
-        KISS is the smallest complete robust solution—not minimal effort, a stub, or a
-        special case that passes one visible test.
-      </blockquote>
-      <table>
-        <caption>What people keep running into, and what this launcher changes.</caption>
-        <tbody>
-          <tr><th>“It edited files when I asked a question.”</th><td>Questions are questions. Edit only when asked.</td></tr>
-          <tr><th>“A small fix became a refactor.”</th><td>Deliver the requested scope and preserve unrelated work.</td></tr>
-          <tr><th>“It rewrote comments nobody mentioned.”</th><td>Preserve comment density and avoid unrequested reports.</td></tr>
-          <tr><th>“It over-engineered everything.”</th><td>Choose the simplest complete robust solution.</td></tr>
-          <tr><th>“Concise meant lazy.”</th><td>No stubs, hardcodes, swallowed errors, or production shortcuts.</td></tr>
-          <tr><th>“Extra tools ate the budget.”</th><td>Six core tools by default; opt in to the rest.</td></tr>
-          <tr><th>“MCP discovered more than expected.”</th><td>Strict mode, with no unrelated discovery.</td></tr>
-          <tr><th>“Compaction forgot the objective.”</th><td>An editable handoff keeps objective and validation state.</td></tr>
-          <tr><th>“Defaults changed under me.”</th><td>Own the files and inspect every effective choice.</td></tr>
-        </tbody>
-      </table>
+    <section class="indexed-section principle" id="principle" aria-labelledby="principle-title">
+      <p class="section-number" aria-hidden="true">01</p>
+      <div class="section-body">
+        <p class="eyebrow">The principle</p>
+        <h2 id="principle-title">The smallest complete, robust solution.</h2>
+        <p class="section-intro">
+          KISS points at the harness, not at the quality of the work. Concise does not mean
+          incomplete. Fewer tools does not mean fewer standards.
+        </p>
+        <ul class="principle-list">
+          <li><strong>Questions stay questions.</strong><span>Edit only when the request calls for an edit.</span></li>
+          <li><strong>Small fixes stay small.</strong><span>Repair the root cause and preserve unrelated work.</span></li>
+          <li><strong>Complete means complete.</strong><span>No stubs, hardcodes, swallowed errors, or test-only shortcuts.</span></li>
+        </ul>
+      </div>
     </section>
 
-    <section id="defaults">
-      <h2>Defaults</h2>
-      <table>
-        <caption>What changes only when you launch <code>claude-kiss</code>.</caption>
-        <tbody>
-          <tr><th>System prompt</th><td>Concise builder-first replacement</td></tr>
-          <tr><th>Core tools</th><td><code>Bash</code>, <code>Glob</code>, <code>Grep</code>, <code>Read</code>, <code>Edit</code>, <code>Write</code></td></tr>
-          <tr><th>MCP</th><td>Strict mode; explicit configuration required</td></tr>
-          <tr><th>Bundled extras</th><td>Skills, workflows, artifacts, connectors, agent view, and remote control disabled</td></tr>
-          <tr><th>Nonessential traffic</th><td>Supported telemetry, survey, error-reporting, marketplace, and auto-update opt-outs enabled</td></tr>
-          <tr><th>Compaction</th><td>Tuned, plain, early, manual, or off</td></tr>
-          <tr><th>Ordinary Claude</th><td>Untouched</td></tr>
-        </tbody>
-      </table>
-      <p>Need more surface? Bring it explicitly:</p>
-      <pre><code>CLAUDE_KISS_TOOLS=default claude-kiss
-CLAUDE_KISS_MCP=1 claude-kiss
-claude-kiss --mcp-config ./mcp.json</code></pre>
+    <section class="indexed-section surface" id="surface" aria-labelledby="surface-title">
+      <p class="section-number" aria-hidden="true">02</p>
+      <div class="section-body">
+        <p class="eyebrow">The surface</p>
+        <h2 id="surface-title">Six core defaults. Four quick switches.</h2>
+        <p class="section-intro">
+          The launcher requests six coding tools by default. Add a common capability when
+          the task needs it, and combine switches when it needs more.
+        </p>
+
+        <div class="surface-grid">
+          <article class="tool-panel">
+            <header>
+              <h3>Core default</h3>
+              <span>06</span>
+            </header>
+            <ul class="tool-list">
+              <li><code>Bash</code></li>
+              <li><code>Glob</code></li>
+              <li><code>Grep</code></li>
+              <li><code>Read</code></li>
+              <li><code>Edit</code></li>
+              <li><code>Write</code></li>
+            </ul>
+          </article>
+
+          <article class="capability-panel">
+            <header>
+              <h3>Quick switches</h3>
+              <span>04</span>
+            </header>
+            <dl class="capability-list">
+              <div>
+                <dt><code>CLAUDE_KISS_WEB=1</code></dt>
+                <dd>WebFetch + WebSearch</dd>
+              </div>
+              <div>
+                <dt><code>CLAUDE_KISS_SKILLS=1</code></dt>
+                <dd>Your skills</dd>
+              </div>
+              <div>
+                <dt><code>CLAUDE_KISS_DELEGATION=1</code></dt>
+                <dd>Agent delegation</dd>
+              </div>
+              <div>
+                <dt><code>CLAUDE_KISS_MCP=1</code></dt>
+                <dd>MCP discovery, tool search + resources</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+
+        <p class="surface-note">
+          Managed defaults suppress bundled workflows, official marketplace autoinstall,
+          Claude.ai skill sync, Chrome integration, agent view, artifacts, connectors, remote
+          control, and auto memory. Native CLI
+          overrides, settings, hooks, and plugins remain live and can change the effective
+          surface. <code>EndConversation</code> may also appear conditionally as a safety tool;
+          it does not add file access.
+        </p>
+      </div>
     </section>
 
-    <section id="own">
-      <h2>Own it</h2>
-      <p>Run <code>claude-kiss init</code> once. Three plain files become yours.</p>
-      <pre><code>~/.config/claude-kiss/
+    <section class="indexed-section control" id="control" aria-labelledby="control-title">
+      <p class="section-number" aria-hidden="true">03</p>
+      <div class="section-body">
+        <p class="eyebrow">The control</p>
+        <h2 id="control-title">Plain files. Visible choices.</h2>
+        <p class="section-intro">
+          Inspect the effective launch before it runs, or copy the managed defaults once and
+          make them yours. Updates never overwrite user-owned configuration.
+        </p>
+
+        <div class="control-grid">
+          <article>
+            <span class="shape circle" aria-hidden="true"></span>
+            <h3>See the launch</h3>
+            <p><code>doctor</code> reports the effective prompt, settings, tools, capability state, memory source, and Claude Code checks.</p>
+            <pre tabindex="0" aria-label="Inspection commands"><code>claude-kiss doctor
+CLAUDE_KISS_DRY_RUN=1 claude-kiss</code></pre>
+          </article>
+          <article>
+            <span class="shape square" aria-hidden="true"></span>
+            <h3>Own the defaults</h3>
+            <p>Run <code>claude-kiss init</code>. From then on, these three files belong to you:</p>
+            <pre tabindex="0" aria-label="User configuration paths"><code>~/.config/claude-kiss/
   prompt.md
   settings.json
   memory/CLAUDE.md</code></pre>
-      <p>
-        Installer updates replace managed defaults only. They never merge, migrate, or
-        overwrite your files.
-      </p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="inspect">
-      <h2>Inspect it</h2>
-      <p>Every launch is visible before it happens:</p>
-      <pre><code>CLAUDE_KISS_DRY_RUN=1 claude-kiss
-claude-kiss doctor</code></pre>
-      <p>
-        <code>doctor</code> reports the effective prompt, settings, tools, compaction mode,
-        memory source, and required Claude Code capabilities.
-      </p>
+    <section class="proof-grid" aria-label="Evidence and limits">
+      <article class="proof" id="evidence">
+        <p class="eyebrow">Evidence</p>
+        <h2>Measure the files, not the pitch.</h2>
+        <p>
+          The repository includes eight paired tasks: same fixture, prompt, model, and budget;
+          ordinary <code>claude</code> versus <code>claude-kiss</code>. The evaluator checks the
+          resulting files, not just the prose.
+        </p>
+        <p class="text-links">
+          <a href="https://github.com/aphoristicartist/claude-kiss/blob/main/evals/run_evals.py">Read the evaluator</a>
+          <a href="https://github.com/aphoristicartist/claude-kiss/blob/main/WHY.md">Read the case</a>
+        </p>
+      </article>
+      <article class="limits" id="limits">
+        <p class="eyebrow">Trust boundary</p>
+        <h2>Strong defaults are not a sandbox.</h2>
+        <p>
+          <code>Bash</code> remains powerful. User, project, and local settings—and their
+          hooks and plugins—still load. Explicit native flags can replace managed defaults.
+          Tool limits shape attention, not filesystem access. Review permissions, repository
+          settings, plugins, and MCP configurations as code.
+        </p>
+        <p><a href="https://github.com/aphoristicartist/claude-kiss#trust-boundary">Understand the boundary</a></p>
+      </article>
     </section>
 
-    <section id="limits">
-      <h2>Limits</h2>
-      <p>
-        Claude KISS is not a sandbox. <code>Bash</code> remains powerful. Tool defaults
-        reduce attention surface; they do not replace permission review, testing, or
-        security judgment.
-      </p>
-    </section>
-
-    <section id="evidence">
-      <h2>Evidence</h2>
-      <p>
-        The repository includes a paired evaluator for identical isolated tasks. In one
-        four-task smoke run, both launchers passed 4/4; KISS averaged 56.6% fewer result
-        words and 61.0% lower reported cost. That is evidence to inspect, not a magic
-        claim.
-      </p>
-      <p><a href="https://github.com/aphoristicartist/claude-kiss/blob/main/evals/RESULTS.md">Read the evaluation</a></p>
+    <section class="final-install" aria-labelledby="final-install-title">
+      <p class="eyebrow">Start small</p>
+      <h2 id="final-install-title">Read it. Install it. Ship.</h2>
+      <pre tabindex="0" aria-label="Install command"><code>curl -fsSL https://claude-kiss.com/install.sh | sh</code></pre>
+      <p>Then run <code>claude-kiss</code>. Your ordinary <code>claude</code> command remains exactly as it was.</p>
     </section>
   </main>
 
-  <footer>
-    <p>MIT licensed. Independent project. Not affiliated with or endorsed by Anthropic.</p>
-    <nav aria-label="Footer">
+  <footer class="site-footer">
+    <div>
+      <a class="brand footer-brand" href="/" aria-label="Claude KISS home">
+        <img src="/mark.svg" alt="" width="36" height="36">
+        <span>Claude KISS</span>
+      </a>
+      <p>MIT licensed. Independent project. Not produced by, endorsed by, or affiliated with Anthropic.</p>
+    </div>
+    <nav aria-label="Footer navigation">
       <a href="https://github.com/aphoristicartist/claude-kiss">Source</a>
       <a href="https://github.com/aphoristicartist/claude-kiss/releases">Releases</a>
       <a href="https://github.com/aphoristicartist/claude-kiss/blob/main/LICENSE">License</a>
+      <a href="#main">Back to top <span aria-hidden="true">&#8593;</span></a>
     </nav>
   </footer>
 </body>
