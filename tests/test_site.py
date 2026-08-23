@@ -19,6 +19,7 @@ PUBLIC = ROOT / "public"
 INDEX = (PUBLIC / "index.html").read_text(encoding="utf-8")
 CSS = (PUBLIC / "styles.css").read_text(encoding="utf-8")
 NOT_FOUND = (PUBLIC / "404.html").read_text(encoding="utf-8")
+NOT_FOUND_FUNCTION = (ROOT / "functions" / "_middleware.js").read_text(encoding="utf-8")
 VERSION = (ROOT / "RELEASE_VERSION").read_text(encoding="utf-8").strip()
 EXPECT_BUILT = "--built" in sys.argv
 if EXPECT_BUILT:
@@ -176,6 +177,41 @@ class SourceTests(unittest.TestCase):
         sitemap = ET.parse(PUBLIC / "sitemap.xml")
         locations = [node.text for node in sitemap.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
         self.assertEqual(locations, ["https://claude-kiss.com/"])
+
+    def test_not_found_function_is_narrowly_routed(self) -> None:
+        routes = json.loads((PUBLIC / "_routes.json").read_text(encoding="utf-8"))
+        self.assertEqual(routes["version"], 1)
+        self.assertEqual(routes["include"], ["/*"])
+        self.assertEqual(
+            set(routes["exclude"]),
+            {
+                "/",
+                "/404",
+                "/404.html",
+                "/favicon.svg",
+                "/github",
+                "/index",
+                "/index.html",
+                "/install",
+                "/install.sh",
+                "/mark.svg",
+                "/og.jpg",
+                "/og.svg",
+                "/releases/latest",
+                "/releases/latest/*",
+                f"/releases/v{VERSION}/claude-kiss.tar.gz",
+                f"/releases/v{VERSION}/claude-kiss.tar.gz.sha256",
+                f"/releases/v{VERSION}/release.json",
+                "/robots.txt",
+                "/sitemap.xml",
+                "/styles.css",
+            },
+        )
+        self.assertIn("env.ASSETS.fetch", NOT_FOUND_FUNCTION)
+        self.assertIn('"no-store, no-transform"', NOT_FOUND_FUNCTION)
+        self.assertIn('"Allow", "GET, HEAD"', NOT_FOUND_FUNCTION)
+        self.assertIn("status: 405", NOT_FOUND_FUNCTION)
+        self.assertNotRegex(NOT_FOUND_FUNCTION, r"https?://")
 
     def test_vector_assets_and_social_card(self) -> None:
         for filename in ("favicon.svg", "mark.svg", "og.svg"):
