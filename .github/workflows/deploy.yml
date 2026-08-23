@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+jobs:
+  production:
+    if: ${{ vars.CLOUDFLARE_DEPLOY_ENABLED == 'true' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.deployment-url }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Check static source
+        run: ./tests/test.sh
+
+      - name: Stage and verify release files
+        run: |
+          ./build.sh
+          ./tests/test.sh --built
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3.15.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: 4.125.0
+          command: pages deploy public --project-name claude-kiss --branch main
+
+      - name: Verify production
+        run: |
+          curl --fail --silent --show-error --retry 5 https://claude-kiss.com/ \
+            | grep -Fq '<title>Claude KISS'
+          curl --fail --silent --show-error --retry 5 --head \
+            https://claude-kiss.com/install.sh >/dev/null

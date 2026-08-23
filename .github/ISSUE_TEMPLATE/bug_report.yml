@@ -1,0 +1,66 @@
+name: Website bug
+description: Report a reproducible content, display, accessibility, routing, or release-mirror problem.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For vulnerabilities, use the private **Report a vulnerability** form in the Security
+        tab instead of opening a public issue.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Content
+        - Layout or responsive design
+        - Accessibility
+        - Install or release URL
+        - Redirect, cache, or security header
+        - Build or deployment
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Affected URL
+      placeholder: https://claude-kiss.com/
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Include browser or command, operating system, viewport, and color scheme when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for this problem.
+          required: true
+        - label: I removed credentials, private source, and personal paths from this report.
+          required: true
