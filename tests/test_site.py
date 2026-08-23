@@ -116,7 +116,7 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(parser.tags["main"], 1)
         self.assertEqual(parser.tags["script"], 0)
         self.assertIn("/", parser.hrefs)
-        self.assertIn("/styles.css", parser.assets)
+        self.assertIn("/styles.css?v=2", parser.assets)
 
     def test_ids_and_fragment_links(self) -> None:
         duplicates = [item for item, count in Counter(PARSER.ids).items() if count > 1]
@@ -134,6 +134,8 @@ class SourceTests(unittest.TestCase):
         external_assets = [asset for asset in PARSER.assets if not asset.startswith("/")]
         self.assertEqual(external_assets, [])
         self.assertNotRegex(CSS, r"url\(\s*['\"]?https?://")
+        for asset in ("/favicon.svg?v=2", "/mark.svg?v=2", "/styles.css?v=2"):
+            self.assertIn(asset, PARSER.assets)
 
     def test_metadata(self) -> None:
         by_name = {meta.get("name"): meta.get("content", "") for meta in PARSER.metas if meta.get("name")}
@@ -149,6 +151,19 @@ class SourceTests(unittest.TestCase):
             self.assertTrue(by_property.get(name), name)
         canonicals = [link.get("href") for link in PARSER.links if link.get("rel") == "canonical"]
         self.assertEqual(canonicals, ["https://claude-kiss.com/"])
+
+    def test_research_section_links_primary_sources(self) -> None:
+        self.assertIn("research", PARSER.ids)
+        for source in (
+            "https://arxiv.org/abs/2608.18389",
+            "https://arxiv.org/abs/2608.11386",
+            "https://arxiv.org/abs/2608.11095",
+            "https://arxiv.org/abs/2608.01507",
+            "https://arxiv.org/abs/2608.02639",
+            "https://arxiv.org/abs/2605.24660",
+        ):
+            self.assertIn(source, PARSER.hrefs)
+        self.assertIn("default-minimal and task-relative", INDEX)
 
     def test_version_references_stay_in_sync(self) -> None:
         self.assertRegex(VERSION, r"^\d+\.\d+\.\d+(?:[.-][0-9A-Za-z.-]+)?$")
@@ -216,6 +231,10 @@ class SourceTests(unittest.TestCase):
     def test_vector_assets_and_social_card(self) -> None:
         for filename in ("favicon.svg", "mark.svg", "og.svg"):
             ET.parse(PUBLIC / filename)
+        mark = (PUBLIC / "mark.svg").read_text(encoding="utf-8")
+        self.assertIn("Claude KISS K monogram", mark)
+        self.assertNotIn("#1746a2", mark)
+        self.assertNotIn("#f2c230", mark)
         self.assertEqual(jpeg_dimensions(PUBLIC / "og.jpg"), (1200, 630))
         self.assertLess((PUBLIC / "og.jpg").stat().st_size, 200_000)
 
