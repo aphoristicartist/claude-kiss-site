@@ -116,7 +116,7 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(parser.tags["main"], 1)
         self.assertEqual(parser.tags["script"], 0)
         self.assertIn("/", parser.hrefs)
-        self.assertIn("/styles.css", parser.assets)
+        self.assertIn("/styles.css?v=2", parser.assets)
 
     def test_ids_and_fragment_links(self) -> None:
         duplicates = [item for item, count in Counter(PARSER.ids).items() if count > 1]
@@ -134,6 +134,8 @@ class SourceTests(unittest.TestCase):
         external_assets = [asset for asset in PARSER.assets if not asset.startswith("/")]
         self.assertEqual(external_assets, [])
         self.assertNotRegex(CSS, r"url\(\s*['\"]?https?://")
+        for asset in ("/favicon.svg?v=2", "/mark.svg?v=2", "/styles.css?v=2"):
+            self.assertIn(asset, PARSER.assets)
 
     def test_metadata(self) -> None:
         by_name = {meta.get("name"): meta.get("content", "") for meta in PARSER.metas if meta.get("name")}
