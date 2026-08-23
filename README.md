@@ -21,6 +21,10 @@ design, domain installer, and immutable release mirrors.
   and a responsive layout.
 - A restrictive Content Security Policy and explicit browser security headers.
 
+The global `no-transform` cache directive is deliberate: it prevents the CDN from
+injecting analytics and keeps mirrored release bytes untouched. The policy permits
+same-origin connections for browser tooling while continuing to disallow scripts.
+
 The visual system follows the same rule as the product: a small set of useful primitives,
 combined deliberately. Its Bauhaus palette is warm paper (`#f3f0e8`), near-black
 (`#11100e`), red (`#d83a2e`), cobalt (`#1746a2`), and yellow (`#f2c230`). The reusable
