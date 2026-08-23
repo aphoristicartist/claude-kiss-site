@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
-  <title>Claude KISS. Keep the work. Cut the noise.</title>
+  <title>Claude KISS. Love the model. Control the harness.</title>
   <rect width="1200" height="630" fill="#f3f0e8"/>
   <path d="M0 0h600v18H0z" fill="#d83a2e"/>
   <path d="M600 0h240v18H600z" fill="#f2c230"/>
@@ -8,17 +8,16 @@
 
   <g transform="translate(98 92) scale(.58)">
     <rect width="128" height="128" fill="#f3f0e8"/>
-    <rect x="6" y="6" width="116" height="116" fill="none" stroke="#11100e" stroke-width="8"/>
-    <path d="M28 24h18v80H28z" fill="#11100e"/>
-    <path d="m43 57 39-33h25L56 68z" fill="#1746a2"/>
-    <path d="m43 60 14-12 51 56H82z" fill="#d83a2e"/>
-    <circle cx="98" cy="29" r="10" fill="#f2c230" stroke="#11100e" stroke-width="4"/>
+    <rect x="8" y="8" width="112" height="112" fill="none" stroke="#11100e" stroke-width="8"/>
+    <path d="m42 64 43-35" fill="none" stroke="#d83a2e" stroke-width="18"/>
+    <path d="m42 64 43 35" fill="none" stroke="#11100e" stroke-width="18"/>
+    <path d="M37 29v70" fill="none" stroke="#11100e" stroke-width="18"/>
   </g>
   <text x="194" y="136" fill="#11100e" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="800" letter-spacing="-1">CLAUDE KISS</text>
-  <text x="194" y="169" fill="#5f5b53" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2.8">SECOND LAUNCHER · SAME CLAUDE CODE</text>
+  <text x="194" y="169" fill="#5f5b53" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2.8">SAME CLAUDE CODE · YOUR DEFAULTS</text>
 
-  <text x="98" y="314" fill="#11100e" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="800" letter-spacing="-5">Keep the work.</text>
-  <text x="98" y="405" fill="#d83a2e" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="800" letter-spacing="-5">Cut the noise.</text>
+  <text x="98" y="314" fill="#11100e" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="800" letter-spacing="-5">Love the model.</text>
+  <text x="98" y="405" fill="#d83a2e" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800" letter-spacing="-5">Control the harness.</text>
 
   <g transform="translate(880 105)">
     <circle cx="106" cy="106" r="106" fill="#d83a2e"/>

@@ -150,6 +150,19 @@ class SourceTests(unittest.TestCase):
         canonicals = [link.get("href") for link in PARSER.links if link.get("rel") == "canonical"]
         self.assertEqual(canonicals, ["https://claude-kiss.com/"])
 
+    def test_research_section_links_primary_sources(self) -> None:
+        self.assertIn("research", PARSER.ids)
+        for source in (
+            "https://arxiv.org/abs/2608.18389",
+            "https://arxiv.org/abs/2608.11386",
+            "https://arxiv.org/abs/2608.11095",
+            "https://arxiv.org/abs/2608.01507",
+            "https://arxiv.org/abs/2608.02639",
+            "https://arxiv.org/abs/2605.24660",
+        ):
+            self.assertIn(source, PARSER.hrefs)
+        self.assertIn("default-minimal and task-relative", INDEX)
+
     def test_version_references_stay_in_sync(self) -> None:
         self.assertRegex(VERSION, r"^\d+\.\d+\.\d+(?:[.-][0-9A-Za-z.-]+)?$")
         self.assertIn(f"v{VERSION}", INDEX)
@@ -216,6 +229,10 @@ class SourceTests(unittest.TestCase):
     def test_vector_assets_and_social_card(self) -> None:
         for filename in ("favicon.svg", "mark.svg", "og.svg"):
             ET.parse(PUBLIC / filename)
+        mark = (PUBLIC / "mark.svg").read_text(encoding="utf-8")
+        self.assertIn("Claude KISS K monogram", mark)
+        self.assertNotIn("#1746a2", mark)
+        self.assertNotIn("#f2c230", mark)
         self.assertEqual(jpeg_dimensions(PUBLIC / "og.jpg"), (1200, 630))
         self.assertLess((PUBLIC / "og.jpg").stat().st_size, 200_000)
 

@@ -376,8 +376,7 @@ h1 em {
 }
 
 .mark-stage img {
-  width: min(100%, 24rem);
-  filter: drop-shadow(1.25rem 1.25rem 0 var(--blue));
+  width: min(82%, 21rem);
 }
 
 .hero-system figcaption {
@@ -658,6 +657,82 @@ h1 em {
   line-height: 1.65;
 }
 
+.research {
+  background: var(--surface);
+}
+
+.research .section-number {
+  color: var(--blue);
+}
+
+.research-list {
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--line);
+  list-style: none;
+}
+
+.research-list li {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.78fr) minmax(0, 1.35fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.research-list li + li {
+  border-top: 1px solid var(--line);
+}
+
+.research-list li > div {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+}
+
+.research-list time {
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.research-list a {
+  font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.research-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.research-limit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: end;
+  gap: 1.5rem 3rem;
+  margin-top: 2rem;
+  padding: 1.35rem 0 0 1.35rem;
+  border-top: 2px solid var(--line);
+  border-left: 0.55rem solid var(--red);
+}
+
+.research-limit p {
+  max-width: 49rem;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.research-limit a {
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
 .proof-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -805,8 +880,7 @@ h1 em {
 }
 
 .error-mark img {
-  width: min(72%, 24rem);
-  box-shadow: 1.25rem 1.25rem 0 #7898ff;
+  width: min(62%, 21rem);
 }
 
 @media (max-width: 64rem) {
@@ -932,6 +1006,11 @@ h1 em {
     padding-left: clamp(1.25rem, 6vw, 3rem);
   }
 
+  .research-list li,
+  .research-limit {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
@@ -964,7 +1043,7 @@ h1 em {
 
   .site-header nav {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
     border-top: 1px solid var(--line);
   }
@@ -977,6 +1056,10 @@ h1 em {
 
   .site-header nav a:not(:last-child) {
     border-right: 1px solid var(--line);
+  }
+
+  .site-header nav a:nth-child(3n) {
+    border-right: 0;
   }
 
   .site-header .nav-install {

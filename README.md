@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/mark.svg" width="112" height="112" alt="Claude KISS geometric K mark">
+  <img src="public/mark.svg" width="112" height="112" alt="Claude KISS K monogram">
 </p>
 
 # claude-kiss.com
@@ -31,8 +31,9 @@ page, asset, installer, release, and redirect on the static path.
 
 The visual system follows the same rule as the product: a small set of useful primitives,
 combined deliberately. Its Bauhaus palette is warm paper (`#f3f0e8`), near-black
-(`#11100e`), red (`#d83a2e`), cobalt (`#1746a2`), and yellow (`#f2c230`). The reusable
-geometric K is [`public/mark.svg`](public/mark.svg).
+(`#11100e`), red (`#d83a2e`), cobalt (`#1746a2`), and yellow (`#f2c230`). The reusable K
+monogram reduces the brand mark itself to one frame, three strokes, and two colors; it lives
+in [`public/mark.svg`](public/mark.svg).
 
 After editing the vector social card, rebuild its compatibility JPEG with:
 
