@@ -24,6 +24,10 @@ design, domain installer, and immutable release mirrors.
 The global `no-transform` cache directive is deliberate: it prevents the CDN from
 injecting analytics and keeps mirrored release bytes untouched. The policy permits
 same-origin connections for browser tooling while continuing to disallow scripts.
+Cloudflare Pages replaces cache headers on its built-in 404 response, so the tiny
+[`functions/_middleware.js`](functions/_middleware.js) handler restores `no-transform`
+only for missing paths. [`public/_routes.json`](public/_routes.json) keeps every published
+page, asset, installer, release, and redirect on the static path.
 
 The visual system follows the same rule as the product: a small set of useful primitives,
 combined deliberately. Its Bauhaus palette is warm paper (`#f3f0e8`), near-black
@@ -105,7 +109,8 @@ Before deploying a new launcher version:
 1. Publish `claude-kiss.tar.gz` and `claude-kiss.tar.gz.sha256` on the matching launcher
    tag.
 2. Update `RELEASE_VERSION`, the visible version and release link in `public/index.html`,
-   and the latest aliases in `public/_redirects`.
+   the latest aliases in `public/_redirects`, and the static release exclusions in
+   `public/_routes.json`.
 3. Run `./tests/test.sh`, `./build.sh`, and `./tests/test.sh --built`.
 4. Preview the complete `public/` directory, deploy it, then verify the homepage,
    `/install.sh`, `/releases/latest`, and the immutable archive over HTTPS.

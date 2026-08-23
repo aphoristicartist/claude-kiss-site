@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/",
+    "/404",
+    "/404.html",
+    "/favicon.svg",
+    "/github",
+    "/index",
+    "/index.html",
+    "/install",
+    "/install.sh",
+    "/mark.svg",
+    "/og.jpg",
+    "/og.svg",
+    "/releases/latest",
+    "/releases/latest/*",
+    "/releases/v0.7.1/claude-kiss.tar.gz",
+    "/releases/v0.7.1/claude-kiss.tar.gz.sha256",
+    "/releases/v0.7.1/release.json",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/styles.css"
+  ]
+}
