@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-repo=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
+repo=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P)
 public="$repo/public"
 version=$(tr -d '\r\n' <"$repo/RELEASE_VERSION")
 
