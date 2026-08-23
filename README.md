@@ -108,10 +108,10 @@ wrangler pages deploy public --project-name claude-kiss --branch main
 ```
 
 Production automation is defined in `.github/workflows/deploy.yml`. It remains safely skipped
-until a maintainer adds a scoped `CLOUDFLARE_API_TOKEN` Actions secret and sets the
-`CLOUDFLARE_DEPLOY_ENABLED` repository variable to `true`; the non-secret account ID is kept
-in `CLOUDFLARE_ACCOUNT_ID`. Deployments run only from protected `main` through the GitHub
-`production` environment.
+until a maintainer adds a scoped `CLOUDFLARE_API_TOKEN` secret to the GitHub `production`
+environment and sets the `CLOUDFLARE_DEPLOY_ENABLED` repository variable to `true`; the
+non-secret account ID is kept in `CLOUDFLARE_ACCOUNT_ID`. Deployments run only from protected
+`main` through that environment.
 
 Before deploying a new launcher version:
 
