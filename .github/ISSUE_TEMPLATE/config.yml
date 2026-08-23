@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Claude KISS questions and ideas
+    url: https://github.com/aphoristicartist/claude-kiss/discussions/new?category=q-a
+    about: Discuss product usage and early ideas in the main repository.
+  - name: Private website security report
+    url: https://github.com/aphoristicartist/claude-kiss-site/security/advisories/new
+    about: Report website or deployment vulnerabilities privately.

@@ -11,6 +11,8 @@ The launcher and website live in separate repositories on purpose. Product code,
 and release packaging stay with the launcher. This repository owns the public explanation,
 design, domain installer, and immutable release mirrors.
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) before proposing or changing site behavior.
+
 ## Kept simple
 
 - One product page, one small 404 page, and one stylesheet.
@@ -104,6 +106,12 @@ The site targets Cloudflare Pages through `wrangler.toml`:
 ./build.sh
 wrangler pages deploy public --project-name claude-kiss --branch main
 ```
+
+Production automation is defined in `.github/workflows/deploy.yml`. It remains safely skipped
+until a maintainer adds a scoped `CLOUDFLARE_API_TOKEN` Actions secret and sets the
+`CLOUDFLARE_DEPLOY_ENABLED` repository variable to `true`; the non-secret account ID is kept
+in `CLOUDFLARE_ACCOUNT_ID`. Deployments run only from protected `main` through the GitHub
+`production` environment.
 
 Before deploying a new launcher version:
 
